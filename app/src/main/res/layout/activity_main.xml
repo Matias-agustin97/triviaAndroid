@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--
+     This here is the navigation drawer, as you can see it wraps the activity
+
+
+    -->
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--
+                 Use @+id/titleFragment for the android:id
+                 Use com.example.android.navigation.TitleFragment for the android:name
+                 Use match_parent for the layout_height and layout_width
+                 The name attribute is the full path to the fragment
+
+
+                 So this nav graph is like a container for fragments
+
+                  Eu...
+            The navigation host Fragment needs to know which navigation graph resource to use.
+            Add the app:navGraph attribute and set it to the navigation graph resource,
+            which is @navigation/navigation.
+
+            Add the app:defaultNavHost attribute and set it to "true".
+            Now this navigation host is the default host and will intercept the system Back button.
+
+                  -->
+            <fragment
+                android:id="@+id/myNavHostFragment"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:navGraph="@navigation/navigation"
+                app:defaultNavHost="true" />
+        </LinearLayout>
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/nav_header"
+            app:menu="@menu/navidrawer_menu" />
+        <!--
+         This part of the drawer points to the drawer resource file you created in the
+         menu folder,
+         -->
+    </androidx.drawerlayout.widget.DrawerLayout>
+</layout>
